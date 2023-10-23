@@ -1,0 +1,24 @@
+Spring打卡2：第4章
+1、学习目标：
+基于Cglib或JDK实现含构造函数的类的实例化
+
+2、回顾与计划
+① 上一章扩充了Bean容器的功能，将类的实例化交由自定义的Spring容器实现
+② 但并未考虑到带有参构造器的类的实例化
+③ 改造BeanFactory，使其具备获取有参Bean的能力
+④ 实现含有构造函数的类的实例化
+
+3、项目更新
+① InstantiationStrategy：定义实例化策略接口，入参包括BeanDefinition、beanName、Class的构造器、入参
+② SimpleInstantiationStrategy：通过JDK自带的Class类的getDeclaredConstructor方法获取构造器后，通过newInstance获取实例化对象
+③ CglibSubclassingInstantiationStrategy：通过Cglib的Enhancer对象，获取Class类，从而获取实例化对象
+④ AbstractBeanFactory：利用Java重载机制，将getBean方法分为带构造参数和无构造参数两种
+⑤ AbstractAutowireCapableBeanFactory：新增createBeanInstance方法，利用JDK自带的Class.getDeclaredConstructors()获取当前Class的构造器，作为参数调用②或者③中的类实例化方法
+
+4、调用流程
+① 实例化DefaultListableBeanFactory，即生成了beanDefinitionMap容器，用于存放BeanDefinition
+② 实例化BeanDefinition，并将UserService.class存入其中
+③ 获取UserService的Bean，先从DefaultSingletonBeanRegistry#singletonObjects单例Bean容器中获取，如果获取不到，就启动创建Bean的流程
+④ 获取BeanDefinition -> 获取BeanDefinition中的UserService类 -> 获取UserService类中的构造器
+⑤ 根据构造器参数以及getBean时的入参，获取获取用于实例化类的构造器（因为可能存在重载的构造器）
+⑥ 调用JDK或者Cglib的类实例化方法，获取UserService的Bean并返回给调用方

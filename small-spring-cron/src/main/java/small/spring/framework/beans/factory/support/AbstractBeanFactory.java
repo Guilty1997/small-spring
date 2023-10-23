@@ -13,19 +13,29 @@ import small.spring.framework.beans.factory.support.singleton.DefaultSingletonBe
 public abstract class AbstractBeanFactory extends DefaultSingletonBeanRegistry implements BeanFactory {
     @Override
     public Object getBean(String beanName) {
-        Object bean = getSingleton(beanName);
+        return doGetBean(beanName, null);
+    }
 
+    @Override
+    public Object getBean(String beanName, Object... args) {
+        return doGetBean(beanName, args);
+    }
+
+    @SuppressWarnings("unchecked")
+    private <T> T doGetBean(final String beanName, final Object[] args) {
+        Object bean = getSingleton(beanName);
         if (bean != null) {
-            return bean;
+            return (T) bean;
         }
         BeanDefinition beanDefinition = getBeanDefinition(beanName);
 
-        return createBean(beanName, beanDefinition);
+        return (T) createBean(beanName, beanDefinition, args);
     }
+
 
     protected abstract BeanDefinition getBeanDefinition(String beanName) throws BeansException;
 
 
-    protected abstract Object createBean(String beanName, BeanDefinition beanDefinition) throws BeansException;
+    protected abstract Object createBean(String beanName, BeanDefinition beanDefinition, Object[] args) throws BeansException;
 
 }
