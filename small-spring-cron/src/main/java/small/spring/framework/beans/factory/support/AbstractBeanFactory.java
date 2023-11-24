@@ -3,7 +3,6 @@ package small.spring.framework.beans.factory.support;
 import small.spring.framework.beans.BeansException;
 import small.spring.framework.beans.factory.BeanFactory;
 import small.spring.framework.beans.factory.config.BeanDefinition;
-import small.spring.framework.beans.factory.support.singleton.DefaultSingletonBeanRegistry;
 
 /**
  * @author：HeHongyi

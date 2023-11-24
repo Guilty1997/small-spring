@@ -1,4 +1,6 @@
-package small.spring.framework.beans.factory.support.singleton;
+package small.spring.framework.beans.factory.support;
+
+import small.spring.framework.beans.factory.config.SingletonBeanRegistry;
 
 import java.util.HashMap;
 import java.util.Map;
