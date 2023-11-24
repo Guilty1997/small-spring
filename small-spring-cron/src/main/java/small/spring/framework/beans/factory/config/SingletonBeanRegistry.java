@@ -1,4 +1,4 @@
-package small.spring.framework.beans.factory.support.singleton;
+package small.spring.framework.beans.factory.config;
 
 /**
  * @author：HeHongyi
