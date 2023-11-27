@@ -1,0 +1,49 @@
+<mxfile host="Electron" modified="2023-11-25T12:29:43.472Z" agent="Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/22.1.2 Chrome/114.0.5735.289 Electron/25.9.4 Safari/537.36" etag="6AqBiFhIxYpud4tNznDk" version="22.1.2" type="device">
+  <diagram name="第 1 页" id="Q_HGhGjfAYIUwZxghZyh">
+    <mxGraphModel dx="1026" dy="673" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="x0JfnG6ZjB_SChlJAuTS-4" value="BeanDefinitionRegistry" style="swimlane;fontStyle=0;childLayout=stackLayout;horizontal=1;startSize=26;fillColor=#d5e8d4;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;strokeColor=#82b366;" parent="1" vertex="1">
+          <mxGeometry x="80" y="580" width="240" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="x0JfnG6ZjB_SChlJAuTS-5" value="void registerBeanDefinition(String beanName, BeanDefinition beanDefinition);" style="text;strokeColor=#82b366;fillColor=#d5e8d4;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" parent="x0JfnG6ZjB_SChlJAuTS-4" vertex="1">
+          <mxGeometry y="26" width="240" height="64" as="geometry" />
+        </mxCell>
+        <mxCell id="x0JfnG6ZjB_SChlJAuTS-8" value="InstantiationStrategy" style="swimlane;fontStyle=0;childLayout=stackLayout;horizontal=1;startSize=26;fillColor=#d5e8d4;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;strokeColor=#82b366;" parent="1" vertex="1">
+          <mxGeometry x="480" y="560" width="260" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="x0JfnG6ZjB_SChlJAuTS-9" value="instantiate(BeanDefinition beanDefinition, String beanName, Constructor ctor, Object[] args):Object" style="text;strokeColor=#82b366;fillColor=#d5e8d4;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" parent="x0JfnG6ZjB_SChlJAuTS-8" vertex="1">
+          <mxGeometry y="26" width="260" height="64" as="geometry" />
+        </mxCell>
+        <mxCell id="x0JfnG6ZjB_SChlJAuTS-13" value="实例话策略" style="text;whiteSpace=wrap;fontColor=#FF3333;" parent="1" vertex="1">
+          <mxGeometry x="480" y="540" width="90" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="pHCGRcoDr2HDbBtSMNE2-1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="x0JfnG6ZjB_SChlJAuTS-14" target="x0JfnG6ZjB_SChlJAuTS-8">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="x0JfnG6ZjB_SChlJAuTS-14" value="CglibSubclassingInstantiationStrategy" style="swimlane;fontStyle=0;childLayout=stackLayout;horizontal=1;startSize=26;fillColor=#dae8fc;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;strokeColor=#6c8ebf;" parent="1" vertex="1">
+          <mxGeometry x="870" y="510" width="260" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="x0JfnG6ZjB_SChlJAuTS-15" value="instantiate(BeanDefinition beanDefinition, String beanName, Constructor ctor, Object[] args):Object" style="text;strokeColor=#6c8ebf;fillColor=#dae8fc;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" parent="x0JfnG6ZjB_SChlJAuTS-14" vertex="1">
+          <mxGeometry y="26" width="260" height="64" as="geometry" />
+        </mxCell>
+        <mxCell id="pHCGRcoDr2HDbBtSMNE2-2" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="x0JfnG6ZjB_SChlJAuTS-19" target="x0JfnG6ZjB_SChlJAuTS-8">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="x0JfnG6ZjB_SChlJAuTS-19" value="SimpleInstantiationStrategy" style="swimlane;fontStyle=0;childLayout=stackLayout;horizontal=1;startSize=26;fillColor=#dae8fc;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;strokeColor=#6c8ebf;" parent="1" vertex="1">
+          <mxGeometry x="870" y="660" width="260" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="x0JfnG6ZjB_SChlJAuTS-20" value="instantiate(BeanDefinition beanDefinition, String beanName, Constructor ctor, Object[] args):Object" style="text;strokeColor=#6c8ebf;fillColor=#dae8fc;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" parent="x0JfnG6ZjB_SChlJAuTS-19" vertex="1">
+          <mxGeometry y="26" width="260" height="64" as="geometry" />
+        </mxCell>
+        <mxCell id="pHCGRcoDr2HDbBtSMNE2-4" value="JDK实例化策略" style="text;whiteSpace=wrap;fontColor=#FF3333;" vertex="1" parent="1">
+          <mxGeometry x="870" y="750" width="90" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="pHCGRcoDr2HDbBtSMNE2-5" value="Cglib子类实例化" style="text;whiteSpace=wrap;fontColor=#FF3333;" vertex="1" parent="1">
+          <mxGeometry x="870" y="480" width="90" height="30" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
