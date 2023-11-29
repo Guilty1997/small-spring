@@ -1,12 +1,17 @@
 package small.spring.framework.beans.factory;
 
+import small.spring.framework.beans.BeansException;
+
 /**
  * @author：HeHongyi
  * @date: 2023/9/28
  * @description: bean 工厂
  */
 public interface BeanFactory {
-    Object getBean(String beanName);
+    Object getBean(String name) throws BeansException;
 
-    Object getBean(String beanName, Object... args);
+    Object getBean(String name, Object... args) throws BeansException;
+
+    <T> T getBean(String name, Class<T> requiredType) throws BeansException;
+
 }

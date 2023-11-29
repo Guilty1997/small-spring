@@ -20,12 +20,11 @@ public abstract class AbstractAutowireCapableBeanFactory extends AbstractBeanFac
 
     @Override
     protected Object createBean(String beanName, BeanDefinition beanDefinition, Object[] args) throws BeansException {
-        Object bean;
+        Object bean = null;
         try {
-            bean = createBeanInstance(beanName, beanDefinition, args);
-            //给bean注入属性
+            bean = createBeanInstance(beanDefinition, beanName, args);
+            // 给 Bean 填充属性
             applyPropertyValues(beanName, bean, beanDefinition);
-
         } catch (Exception e) {
             throw new BeansException("Instantiation of bean failed", e);
         }
@@ -34,23 +33,23 @@ public abstract class AbstractAutowireCapableBeanFactory extends AbstractBeanFac
         return bean;
     }
 
-    protected Object createBeanInstance(String beanName, BeanDefinition beanDefinition, Object[] args) {
-        Constructor constructor = null;
+    protected Object createBeanInstance(BeanDefinition beanDefinition, String beanName, Object[] args) {
+        Constructor constructorToUse = null;
         Class<?> beanClass = beanDefinition.getBeanClass();
         Constructor<?>[] declaredConstructors = beanClass.getDeclaredConstructors();
-        for (Constructor<?> ctor : declaredConstructors) {
+        for (Constructor ctor : declaredConstructors) {
             if (null != args && ctor.getParameterTypes().length == args.length) {
-                constructor = ctor;
+                constructorToUse = ctor;
                 break;
             }
         }
-
-        return getInstantiationStrategy().instantiate(beanDefinition, beanName, constructor, args);
-
+        return getInstantiationStrategy().instantiate(beanDefinition, beanName, constructorToUse, args);
     }
 
-
-    private void applyPropertyValues(String beanName, Object bean, BeanDefinition beanDefinition) {
+    /**
+     * Bean 属性填充
+     */
+    protected void applyPropertyValues(String beanName, Object bean, BeanDefinition beanDefinition) {
         try {
             PropertyValues propertyValues = beanDefinition.getPropertyValues();
             for (PropertyValue propertyValue : propertyValues.getPropertyValues()) {
@@ -71,8 +70,7 @@ public abstract class AbstractAutowireCapableBeanFactory extends AbstractBeanFac
         }
     }
 
-
-    private InstantiationStrategy getInstantiationStrategy() {
+    public InstantiationStrategy getInstantiationStrategy() {
         return instantiationStrategy;
     }
 
